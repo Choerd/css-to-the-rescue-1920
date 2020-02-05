@@ -1,12 +1,12 @@
-/* @media (prefers-color-scheme: light) { */
-  /* :root {
+@media (prefers-color-scheme: light) {
+  :root {
     --main-color: #CE4949;
     --basic-background-color: #ffffff
     --basic-text-color: #222222;
     --focus-text-color: #ffffff;
     --hover-text-color: #ffffff;
-  } */
-/* } */
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -85,6 +85,7 @@ input[type="checkbox"]:checked + section[data-value="category"] {
 input[type="checkbox"]:checked + section[data-value="category"] label {
   top: 10%;
   left: 10%;
+  /* Keyframe schrijven die iets geks doet met de tekst */
   transform: translate(0, 0);
   transition: .3s;
   color: var(--focus-text-color);
@@ -92,6 +93,6 @@ input[type="checkbox"]:checked + section[data-value="category"] label {
   text-decoration: underline;
 }
 
-input[type="checkbox"]:not(:checked) + section[data-value="category"] {
-    /* display: none; */
-}
+/* input[type="checkbox"]:not(:checked) + section[data-value="category"] {
+    display: none;
+} */
