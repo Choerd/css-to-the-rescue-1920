@@ -45,12 +45,14 @@ input[type="checkbox"] {
 div:first-of-type {
   display: flex;
   flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
 }
 
 /* Flex container items */
 div:first-of-type section {
   width: 50%;
-  height: 50vh;
+  height: 50%;
   background-color: var(--basic-background-color);
   position: relative;
 }
