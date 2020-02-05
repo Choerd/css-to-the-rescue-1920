@@ -1,13 +1,71 @@
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) { */
   :root {
-    --course: #F4E408;
-    --light: #fff;
+    --standard-bg-color: #ffffff;
+    --basic-text-color: #222222;
+    --hover-text-color: #ffffff;
   }
+/* } */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --standard-bg-color: #222222;
+    --basic-text-color: #ffffff
+    --hover-text-color: #222222;
+  }
+} */
+
+:root {
+  --title-font: "Stoked", Arial, Helvetica, sans-serif;
+  --hover-color: #CE4949;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --dark: #000;
-    --course: #F4E408;
-  }
+* {
+  font-family: Lato, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+div:first-of-type {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div:first-of-type section {
+  width: 50%;
+  height: 50vh;
+  background-color: var(--standard-bg-color);
+  position: relative;
+}
+
+div:first-of-type > section label {
+  font-family: var(--title-font);
+  color: var(--basic-text-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5vw;
+  text-decoration: line-through;
+}
+
+div:first-of-type > section label {
+  opacity: 0.3;
+}
+
+div:first-of-type > section:hover {
+  background-color: var(--hover-color);
+  transition: .5s;
+  cursor: pointer;
+}
+
+div:first-of-type > section:hover label {
+  opacity: 1;
+  color: var(--hover-text-color);
+  text-decoration: underline;
+  cursor: pointer;
 }
