@@ -19,7 +19,12 @@
 }
 
 :root {
-  --title-font: "Stoked", Arial, Helvetica, sans-serif;
+  --title-font: "Stoked", Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: "Stoked";
+  src: url(./fonts/stoked.woff);
 }
 
 /* Basic styling */
