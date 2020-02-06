@@ -1,22 +1,22 @@
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) { */
   :root {
     --main-color: #CE4949;
-    --basic-background-color: #ffffff
+    --basic-background-color: #ffffff;
     --basic-text-color: #222222;
     --focus-text-color: #ffffff;
     --hover-text-color: #ffffff;
   }
-}
+/* } */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --main-color: #222222;
-    --basic-background-color: #222222
-    --basic-text-color: #222222;
+    --basic-background-color: #222222;
+    --basic-text-color: #ffffff;
     --focus-text-color: #ffffff;
     --hover-text-color: #ffffff;
   }
-}
+} */
 
 :root {
   --title-font: "Stoked", Helvetica, sans-serif;
@@ -36,7 +36,7 @@
 }
 
 /* Hide checkboxes */
-input[type="checkbox"] {
+input[type="radio"] {
   display: none;
 }
 
@@ -50,7 +50,7 @@ div:first-of-type {
 }
 
 /* Flex container items */
-div:first-of-type section {
+div:first-of-type label {
   width: 50%;
   height: 50%;
   background-color: var(--basic-background-color);
@@ -59,25 +59,24 @@ div:first-of-type section {
 
 
 /* Label styling */
-div:first-of-type > section label {
+div:first-of-type > label section > p {
   font-family: var(--title-font);
   color: var(--basic-text-color);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 6.5vw;
+  font-size: max(5vw, 20px);   /* Max/min for font-sizes */
   text-decoration: line-through;
   opacity: 0.3;
 }
 
-div:first-of-type > section:hover {
+div:first-of-type > label:hover {
   background-color: var(--main-color);
-  transition: .5s;
   cursor: pointer;
 }
 
-div:first-of-type > section:hover label {
+div:first-of-type > label:hover section > p {
   opacity: 1;
   color: var(--hover-text-color);
   text-decoration: underline;
@@ -85,24 +84,52 @@ div:first-of-type > section:hover label {
 }
 
 
-/* Styling when focus is on one of the checkboxes/labels */
-input[type="checkbox"]:checked + section[data-value="category"] {
+/* Styling when focus is on one of the checkboxes/labels */ 
+div input[type="radio"]:not(:checked) + label, div input[type="radio"]:not(:checked) + label section label {
+  display: none;
+}
+
+body > input[type="radio"]:checked + div > label {
+  display: block;
+}
+
+div input[type="radio"]:checked + label  {
   width: 100%;
   height: 100vh;
   background-color: var(--main-color);
 }
 
-input[type="checkbox"]:checked + section[data-value="category"] label {
+/* Keyframe schrijven die iets geks doet met de tekst */
+div input[type="radio"]:checked + label section > p {
   top: 10%;
   left: 10%;
-  /* Keyframe schrijven die iets geks doet met de tekst */
   transform: translate(0, 0);
-  transition: .3s;
   color: var(--focus-text-color);
   opacity: 1;
   text-decoration: underline;
 }
 
-/* input[type="checkbox"]:not(:checked) + section[data-value="category"] {
-    display: none;
-} */
+div input[type="radio"]:checked + label section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+div input[type="radio"]:checked + label section label {
+  font-family: var(--title-font);
+  opacity: .3;
+  color: var(--hover-text-color);
+  font-size: max(5vw, 20px);   /* Max/min for font-sizes */
+  background-color: unset;
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  top: 10vh;
+  right: 10vw;
+  text-decoration: line-through;
+}
+
+div input[type="radio"]:checked + label section label:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
