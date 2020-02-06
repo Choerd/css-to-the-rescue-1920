@@ -5,6 +5,9 @@
     --basic-text-color: #222222;
     --focus-text-color: #ffffff;
     --hover-text-color: #ffffff;
+    --title-font: "Stoked", Helvetica, sans-serif;
+    --para-font: "Nexa Light", Helvetica, sans-serif;
+    --para-font-bold: "Nexa Bold", Helvetica, sans-serif;
   }
 /* } */
 
@@ -18,13 +21,20 @@
   }
 } */
 
-:root {
-  --title-font: "Stoked", Helvetica, sans-serif;
-}
 
 @font-face {
   font-family: "Stoked";
   src: url(../fonts/stoked.woff);
+}
+
+@font-face {
+  font-family: "Nexa Light";
+  src: url(../fonts/nexa-light.woff);
+}
+
+@font-face {
+  font-family: "Nexa Bold";
+  src: url(../fonts/nexa-bold.woff);
 }
 
 /* Basic styling */
@@ -42,7 +52,7 @@ input[type="radio"] {
 
 
 /* Flex container */
-div:first-of-type {
+body > div:first-of-type {
   display: flex;
   flex-wrap: wrap;
   width: 100vw;
@@ -50,7 +60,7 @@ div:first-of-type {
 }
 
 /* Flex container items */
-div:first-of-type label {
+body > div:first-of-type label {
   width: 50%;
   height: 50%;
   background-color: var(--basic-background-color);
@@ -59,7 +69,7 @@ div:first-of-type label {
 
 
 /* Label styling */
-div:first-of-type > label section > p {
+body > div:first-of-type > label section > p {
   font-family: var(--title-font);
   color: var(--basic-text-color);
   position: absolute;
@@ -71,12 +81,12 @@ div:first-of-type > label section > p {
   opacity: 0.3;
 }
 
-div:first-of-type > label:hover {
+body > div:first-of-type > label:hover {
   background-color: var(--main-color);
   cursor: pointer;
 }
 
-div:first-of-type > label:hover section > p {
+body > div:first-of-type > label:hover section > p {
   opacity: 1;
   color: var(--hover-text-color);
   text-decoration: underline;
@@ -84,8 +94,8 @@ div:first-of-type > label:hover section > p {
 }
 
 
-/* Styling when focus is on one of the checkboxes/labels */ 
-div input[type="radio"]:not(:checked) + label, div input[type="radio"]:not(:checked) + label section label {
+/* Toggle between the labels */
+body div input[type="radio"]:not(:checked) + label, div input[type="radio"]:not(:checked) + label section label, div input[type="radio"]:not(:checked) + label section > div {
   display: none;
 }
 
@@ -93,13 +103,20 @@ body > input[type="radio"]:checked + div > label {
   display: block;
 }
 
+
+/* Styling when focus is on one of the radio buttons/labels */ 
+div input[type="radio"]:checked + label section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
 div input[type="radio"]:checked + label  {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: var(--main-color);
 }
 
-/* Keyframe schrijven die iets geks doet met de tekst */
 div input[type="radio"]:checked + label section > p {
   top: 10%;
   left: 10%;
@@ -107,19 +124,15 @@ div input[type="radio"]:checked + label section > p {
   color: var(--focus-text-color);
   opacity: 1;
   text-decoration: underline;
+  font-size: max(5vw, 50px);   /* Max/min for font-sizes */
 }
 
-div input[type="radio"]:checked + label section {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-}
-
+/* Button to uncheck the current radio button */
 div input[type="radio"]:checked + label section label {
   font-family: var(--title-font);
   opacity: .3;
   color: var(--hover-text-color);
-  font-size: max(5vw, 20px);   /* Max/min for font-sizes */
+  font-size: max(5vw, 50px);   /* Max/min for font-sizes */
   background-color: unset;
   width: fit-content;
   height: fit-content;
@@ -132,4 +145,33 @@ div input[type="radio"]:checked + label section label {
 div input[type="radio"]:checked + label section label:hover {
   opacity: 1;
   text-decoration: underline;
+  cursor: pointer;
 }
+
+/* Styling for the details on the focussed radio button/label */
+div input[type="radio"]:checked + label section > div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80vw;
+  position: absolute;
+  top: 25vh;
+  left: 10vw;
+  justify-content: space-between;
+}
+
+div input[type="radio"]:checked + label section > div article {
+  margin-bottom: 3vh;
+  min-width: 350px;
+  width: 33%;
+  color: var(--focus-text-color);
+}
+
+div input[type="radio"]:checked + label section > div article h3 {
+  margin-bottom: 4px;
+  font-family: var(--para-font-bold);
+}
+
+div input[type="radio"]:checked + label section > div article p {
+  font-family: var(--para-font);
+}
+
