@@ -124,7 +124,7 @@ div input[type="radio"]:checked + label section > p {
   color: var(--focus-text-color);
   opacity: 1;
   text-decoration: underline;
-  font-size: max(5vw, 50px);   /* Max/min for font-sizes */
+  font-size: max(5vw, 40px);   /* Max/min for font-sizes */
 }
 
 /* Button to uncheck the current radio button */
@@ -132,7 +132,7 @@ div input[type="radio"]:checked + label section label {
   font-family: var(--title-font);
   opacity: .3;
   color: var(--hover-text-color);
-  font-size: max(5vw, 50px);   /* Max/min for font-sizes */
+  font-size: max(5vw, 40px);   /* Max/min for font-sizes */
   background-color: unset;
   width: fit-content;
   height: fit-content;
@@ -160,8 +160,8 @@ div input[type="radio"]:checked + label section > div {
 }
 
 div input[type="radio"]:checked + label section > div article {
-  margin-bottom: 3vh;
-  min-width: 350px;
+  margin-bottom: 4vh;
+  min-width: 240px;
   width: 33%;
   color: var(--focus-text-color);
 }
@@ -173,5 +173,6 @@ div input[type="radio"]:checked + label section > div article h3 {
 
 div input[type="radio"]:checked + label section > div article p {
   font-family: var(--para-font);
+  max-width: 95%;
 }
 
