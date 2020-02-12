@@ -95,17 +95,20 @@ body > div:first-of-type > label:hover section > p {
 
 
 /* Toggle between the labels */
-body div input[type="radio"]:not(:checked) + label, div input[type="radio"]:not(:checked) + label section label, div input[type="radio"]:not(:checked) + label section > div {
+/* body div input[type="radio"]:not(:checked) + label, div input[type="radio"]:not(:checked) + label section label, div input[type="radio"]:not(:checked) + label section > div { */
+div input[type="radio"]:not(:checked) + label section label, div input[type="radio"]:not(:checked) + label section > div {
   display: none;
 }
 
+/* Maak alle 4 de categorien weer zichtbaar */
 body > input[type="radio"]:checked + div > label {
+  transition: .5s;
   display: block;
 }
 
 
 /* Styling when focus is on one of the radio buttons/labels */ 
-div input[type="radio"]:checked + label section {
+body input[type="radio"]:checked + label section {
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -115,7 +118,19 @@ div input[type="radio"]:checked + label  {
   width: 100vw;
   height: 100vh;
   background-color: var(--main-color);
+  transition: .5s;
 }
+
+body > input[type="radio"]:not(:checked) + div input[type="radio"]:not(:checked) + label {
+  height: 0px;
+  width: 0px;
+  transition: .5s;
+}
+
+body > input[type="radio"]:not(:checked) + div input[type="radio"]:not(:checked) + label section > p {
+  font-size: 0px;
+}
+
 
 div input[type="radio"]:checked + label section > p {
   top: 10%;
@@ -124,7 +139,7 @@ div input[type="radio"]:checked + label section > p {
   color: var(--focus-text-color);
   opacity: 1;
   text-decoration: underline;
-  font-size: max(5vw, 40px);   /* Max/min for font-sizes */
+  font-size: max(5vw, 36px);   /* Max/min for font-sizes */
 }
 
 /* Button to uncheck the current radio button */
@@ -152,11 +167,12 @@ div input[type="radio"]:checked + label section label:hover {
 div input[type="radio"]:checked + label section > div {
   display: flex;
   flex-wrap: wrap;
-  width: 80vw;
+  width: 100vw;
   position: absolute;
   top: 25vh;
-  left: 10vw;
+  padding: 0 10vw;
   justify-content: space-between;
+  background-color: var(--main-color);
 }
 
 div input[type="radio"]:checked + label section > div article {
@@ -176,3 +192,119 @@ div input[type="radio"]:checked + label section > div article p {
   max-width: 95%;
 }
 
+/* Ingredients */
+body input[type="radio"]:checked + label div > p {
+  display: none;
+}
+
+div:first-of-type > label > div {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: fit-content;
+}
+
+div:first-of-type > label > div:first-of-type p {
+  font-family: var(--para-font);
+  color: white;
+  display: block;
+  width: fit-content;
+  margin: auto;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+body > div:first-of-type > label > div:first-of-type {
+  display: none;
+}
+
+body > div:first-of-type > label:hover > div:first-of-type {
+  display: block;
+  margin-bottom: 2vh;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type {
+  display: block;
+}
+
+body > div:first-of-type > label > div:first-of-type div img {
+  min-width: 30px;
+  max-width: 90px;
+  width: 13%;
+  z-index: 1;
+  margin: 2px;
+}
+
+body > div:first-of-type > label:hover > div:first-of-type div {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type {
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type > div img {
+  min-width: 70px;
+  max-width: 90px;
+  width: 13%;
+  transform: translate(-25%);
+  position: absolute;
+  animation: yourAnimation .8s 1 ease-in;
+}
+
+@keyframes yourAnimation{
+  from {
+    transform: rotate(0deg) scale(3);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+div input[type="radio"]:checked + label > div:first-of-type > div img:nth-of-type(1) {
+  top: 15%;
+  left: 7%;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type > div img:nth-of-type(2) {
+  top: 30%;
+  left: 77%;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type > div img:nth-of-type(3) {
+  top: 35%;
+  left: 20%;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type > div img:nth-of-type(4) {
+  top: 19%;
+  left: 42%;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type > div img:nth-of-type(5) {
+  top: 40%;
+  left: 58%;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type > div img:nth-of-type(6) {
+  top: 54%;
+  left: 10%;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type > div img:nth-of-type(7) {
+  top: 60%;
+  left: 50%;
+}
+
+div input[type="radio"]:checked + label > div:first-of-type div {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
