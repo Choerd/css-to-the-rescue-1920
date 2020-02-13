@@ -1,0 +1,273 @@
+/* @media (prefers-color-scheme: light) { */
+    :root {
+        --main-color: #CE4949;
+        --basic-background-color: #ffffff;
+        --basic-text-color: #222222;
+        --focus-text-color: #ffffff;
+        --hover-text-color: #ffffff;
+        --title-font: "Stoked", Helvetica, sans-serif;
+        --para-font: "Nexa Light", Helvetica, sans-serif;
+        --para-font-bold: "Nexa Bold", Helvetica, sans-serif;
+      }
+    /* } */
+    
+    /* @media (prefers-color-scheme: dark) {
+      :root {
+        --main-color: #222222;
+        --basic-background-color: #222222;
+        --basic-text-color: #ffffff;
+        --focus-text-color: #ffffff;
+        --hover-text-color: #ffffff;
+      }
+    } */
+    
+    
+    @font-face {
+      font-family: "Stoked";
+      src: url(../fonts/stoked.woff);
+    }
+    
+    @font-face {
+      font-family: "Nexa Light";
+      src: url(../fonts/nexa-light.woff);
+    }
+    
+    @font-face {
+      font-family: "Nexa Bold";
+      src: url(../fonts/nexa-bold.woff);
+    }
+    
+    /* Basic styling */
+    * {
+      font-family: Lato, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Hide checkboxes */
+    input[type="radio"] {
+      display: none;
+    }
+    
+    
+    /* Flex container */
+    body > div:first-of-type {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100vw;
+      height: 100vh;
+    }
+    
+    /* Flex container items */
+    body > div:first-of-type label {
+      width: 50%;
+      height: 50%;
+      background-color: var(--basic-background-color);
+      position: relative;
+    }
+    
+    
+    /* Label styling */
+    body > div:first-of-type > label section > p {
+      font-family: var(--title-font);
+      color: var(--basic-text-color);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: max(5vw, 20px);   /* Max/min for font-sizes */
+      text-decoration: line-through;
+      opacity: 0.3;
+    }
+    
+    body > div:first-of-type > label:hover {
+      background-color: var(--main-color);
+      cursor: pointer;
+    }
+    
+    body > div:first-of-type > label:hover section > p {
+      opacity: 1;
+      color: var(--hover-text-color);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    
+    /* Toggle between the labels */
+    /* body div input[type="radio"]:not(:checked) + label, div input[type="radio"]:not(:checked) + label section label, div input[type="radio"]:not(:checked) + label section > div { */
+    div input[type="radio"]:not(:checked) + label section label, div input[type="radio"]:not(:checked) + label section > div {
+      display: none;
+    }
+    
+    /* Maak alle 4 de categorien weer zichtbaar */
+    body > input[type="radio"]:checked + div > label {
+      transition: .5s;
+      display: block;
+    }
+    
+    
+    /* Styling when focus is on one of the radio buttons/labels */ 
+    body input[type="radio"]:checked + label section {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+    }
+    
+    div input[type="radio"]:checked + label  {
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--main-color);
+      transition: .5s;
+    }
+    
+    body > input[type="radio"]:not(:checked) + div input[type="radio"]:not(:checked) + label {
+      height: 0px;
+      width: 0px;
+      transition: .5s;
+    }
+    
+    body > input[type="radio"]:not(:checked) + div input[type="radio"]:not(:checked) + label section > p {
+      font-size: 0px;
+    }
+    
+    /* Label position on active */
+    div input[type="radio"]:checked + label section > p {
+      top: 10%;
+      left: 10%;
+      transform: translate(0, 0);
+      color: var(--focus-text-color);
+      opacity: 1;
+      text-decoration: underline;
+      font-size: max(5vw, 36px);   /* Max/min for font-sizes */
+    }
+    
+    /* Button to uncheck the current radio button */
+    div input[type="radio"]:checked + label section label {
+      font-family: var(--title-font);
+      opacity: .3;
+      color: var(--hover-text-color);
+      font-size: max(5vw, 40px);   /* Max/min for font-sizes */
+      background-color: unset;
+      width: fit-content;
+      height: fit-content;
+      position: absolute;
+      top: 10vh;
+      right: 10vw;
+      text-decoration: line-through;
+      z-index: 1000;
+    }
+    
+    div input[type="radio"]:checked + label section label:hover {
+      opacity: 1;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    
+    /* Styling for the details on the focussed radio button/label */
+    div input[type="radio"]:checked + label section > div {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100vw;
+      position: absolute;
+      top: 40vh;
+      padding: 0 10vw;
+      justify-content: space-between;
+      background-color: var(--main-color);
+    }
+    
+    div input[type="radio"]:checked + label section > div article {
+      margin-bottom: 10vh;
+      min-width: 240px;
+      width: 33%;
+      color: var(--focus-text-color);
+    }
+    
+    div input[type="radio"]:checked + label section > div article h3 {
+      margin-bottom: 4px;
+      font-family: var(--para-font-bold);
+    }
+    
+    div input[type="radio"]:checked + label section > div article p {
+      font-family: var(--para-font);
+      max-width: 95%;
+    }
+    
+    
+    /* Ingredients */
+    body input[type="radio"]:checked + label div > p {
+      display: none;
+    }
+    
+    div:first-of-type > label > div {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: fit-content;
+    }
+    
+    div:first-of-type > label > div:first-of-type p {
+      font-family: var(--para-font);
+      color: white;
+      display: block;
+      width: fit-content;
+      margin: auto;
+      font-size: 14px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    
+    body > div:first-of-type > label > div:first-of-type {
+      display: none;
+    }
+    
+    body > div:first-of-type > label:hover > div:first-of-type {
+      display: block;
+      margin-bottom: 2vh;
+    }
+    
+    div input[type="radio"]:checked + label > div:first-of-type {
+      position: fixed;
+      z-index: 1;
+      display: block;
+    }
+    
+    div:first-of-type > label > div:first-of-type div img {
+      min-width: 35px;
+      max-width: 90px;
+      width: 13%;
+      z-index: 1;
+      margin: 5px 5px;
+    }
+    
+    div:first-of-type > label:hover > div:first-of-type div {
+      margin: auto;
+      width: 90%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+    
+    
+    div input[type="radio"]:checked + label > div:first-of-type {
+      width: 80%;
+      height: 80%;
+      top: 10%;
+      left: 10%;
+      position: relative;
+    }
+    
+    div input[type="radio"]:checked + label > div:first-of-type > div img {
+      /* display: inline-block; */
+      min-width: 70px;
+      max-width: 100px;
+      top: 100px;
+    }
+    
+    
+    div input[type="radio"]:checked + label > div:first-of-type div {
+      width: 100%;
+      position: absolute;
+      top: 15%;
+    }
