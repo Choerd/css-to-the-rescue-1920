@@ -228,40 +228,64 @@ div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(
   display: none;
 }
 
-/* Crazy shit */
-div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(2) {
-  filter: blur(10px);
-}
-
 div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 100vw;
+  margin-left: -5vw;
+  background-color: var(--main-color);
 }
 
 div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article {
-  width: 300px;
+  width: 430px;
   color: var(--focus-text-color);
   margin-bottom: 5vh;
   padding: 20px;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:nth-of-type(1) {
+  transform-origin: top left;
+  animation: swinging 2s infinite .2s ease-in-out;
+}
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:nth-of-type(2) {
+  transform-origin: top left;
   animation: swinging 2s infinite 0s ease-in-out;
 }
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:nth-of-type(3) {
+  transform-origin: top left;
+  animation: swinging 2s infinite .5s ease-in-out;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:nth-of-type(4) {
+  transform-origin: top left;
+  animation: swinging 2s infinite .2s ease-in-out;
+}
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:nth-of-type(5) {
+  transform-origin: top left;
+  animation: swinging 2s infinite .4s ease-in-out;
+}
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:nth-of-type(6) {
+  transform-origin: top left;
+  animation: swinging 2s infinite .1s ease-in-out;
+}
+
 
 @keyframes swinging{
   0%{
       transform: rotate(15deg);
-      transform-origin: 0% 0%;
       opacity: .8;
+      filter: blur(1.5px) brightness(.9);
       }
   50%{
       transform: rotate(110deg) scale(1.6) skewX(10deg) skewY(-10deg);
-      transform-origin: 0% 0%;
       opacity: 1;
+      filter: blur(0px) brightness(1);
       }
   100%{
       transform: rotate(15deg);
-      transform-origin: 0% 0%;
       opacity: .8;
+      filter: blur(1.5px) brightness(.9);
       }
 }
 
@@ -273,7 +297,6 @@ div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(
 div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article p {
   font-family: var(--para-font);
   max-width: 95%;
-  /* animation: text .1s infinite linear; */
 }
 
 @keyframes text{
@@ -323,10 +346,6 @@ div:first-of-type input[type="radio"]:checked + label section > div:first-of-typ
 }
 
 div:first-of-type input[type="radio"]:checked + label section > div:first-of-type p {
-  transform: translateZ(10px);
-}
-
-div:first-of-type input[type="radio"]:checked + label section > div:first-of-type p {
   text-shadow: 4px 4px 0 rgb(0, 0 ,0 , 1);
   text-decoration-style: wavy;
   padding: 20px 20px;
@@ -341,3 +360,84 @@ div:first-of-type input[type="radio"]:checked + label section > div:first-of-typ
   border-style: dashed;
 }
 
+/* Animation when checking a ingredient */
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article {
+  animation: unset;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(1) {
+  animation: zooming 1s infinite 0s ease-in-out;
+  filter: blur(10px);
+}
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(2) {
+  animation: zooming 1s infinite 0s ease-in-out;
+}
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(3) {
+  animation: zooming 1s infinite 0s ease-in-out;
+  filter: blur(10px);
+}
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(4) {
+  animation: zooming 1s infinite 0s ease-in-out;
+}
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(5) {
+  animation: zooming 1s infinite 0s ease-in-out;
+  filter: blur(10px);
+}
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(6) {
+  animation: zooming 1s infinite 0s ease-in-out;
+  filter: blur(10px);
+}
+
+@keyframes zooming{
+  0%{
+      transform:scale(1.1);
+      transform-origin: 50% 50%;
+      border: 10px solid white;
+      border-style: dotted;
+      }
+  50%{
+      transform: scale(0.4);
+      transform-origin: 50% 50%;
+      border: 0px solid white;
+      }
+  100%{
+      transform: scale(1.1);
+      transform-origin: 50% 50%;
+      border: 10px solid black;
+      border-style: dashed;
+      }
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(1) > p {
+  animation: turning 1.5s infinite 0s ease-in-out;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) {
+  animation: getinview 1s forwards;
+}
+
+@keyframes getinview{
+  0%{
+    transform: translateY(-100vh) scale(.7);
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes turning{
+  0%{
+      transform-origin: 50% 50%;
+      transform: rotateY(0deg) scale(1);
+      }
+  50%{
+      transform-origin: 50% 50%;;
+      transform: rotateY(180deg) scale(.8);
+      }
+  100%{
+      transform-origin: 50% 50%;
+      transform: rotateY(360deg) scale(1);
+      }
+}
