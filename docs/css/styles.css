@@ -91,15 +91,23 @@ div:first-of-type input[type="radio"]:not(:checked) + label {
 @keyframes outliner{
   0%{
     border: 20px solid black;
-    outline-style: dashed;
+    border-style: dashed;
+  }
+  25%{
+    border: 15px solid black;
+    border-style: dotted;
   }
   50%{
-    border: 100px solid black;
-    outline-style: dashed;
+    border: 50px solid black;
+    border-style: dashed;
+  }
+  75%{
+    border: 5px solid black;
+    border-style: dotted;
   }
   100%{
     border: 20px solid black;
-    outline-style: dashed;
+    border-style: dashed;
   }
 }
 
