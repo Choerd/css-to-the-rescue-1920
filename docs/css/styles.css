@@ -53,8 +53,9 @@ input[type="radio"] {
 
 
 /* Toggle between the labels */
-div input[type="radio"]:not(:checked) + label section label, div input[type="radio"]:not(:checked) + label section > div:not(:first-of-type) {
+div input[type="radio"]:not(:checked) + label section label, div input[type="radio"]:not(:checked) + label section > div:not(:first-of-type), div input[type="radio"]:not(:checked) + label {
   display: none;
+  animation: unset;
 }
 
 /* Maak alle 4 de categorien weer zichtbaar */
@@ -83,8 +84,23 @@ div:first-of-type label {
 }
 
 div:first-of-type input[type="radio"]:not(:checked) + label {
-  outline: 20px solid black;
-  outline-style: dashed;
+  animation: outliner .8s ease-in infinite;
+}
+
+
+@keyframes outliner{
+  0%{
+    border: 20px solid black;
+    outline-style: dashed;
+  }
+  50%{
+    border: 100px solid black;
+    outline-style: dashed;
+  }
+  100%{
+    border: 20px solid black;
+    outline-style: dashed;
+  }
 }
 
 div:first-of-type > label:hover {
@@ -115,7 +131,7 @@ div:first-of-type > label section {
 }
 
 div:first-of-type input[type="radio"]:not(:checked) + label:hover section > div:first-of-type p, div:first-of-type input[type="radio"]:not(:checked) + label:active section > div:first-of-type p {
-  padding: 25%;
+  /* padding: 25%; */
   animation: flow 1.2s infinite alternate;
 }
 
@@ -216,6 +232,7 @@ div:first-of-type input[type="radio"]:checked + label section > div:first-of-typ
   width: fit-content;
   font-size: max(5vw, 30px);
   padding: 20px;
+  z-index: 2;
 }
 
 /* Style the content */
@@ -300,13 +317,10 @@ div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(
 }
 
 @keyframes text{
-  0%
-  {
+from {
     font-family: var(--para-font-bold);
     margin-top: 100px;
-  }
-  100%
-  {
+  } to {
     font-family: var(--para-font);
     margin-top: 0px;
   }
