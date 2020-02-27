@@ -1,5 +1,6 @@
   :root {
-    --main-color: #CE4949;
+    --main-color: rgba(206, 73, 73, 1);
+    --contrast-color: rgba(13, 32, 139, 1);
     --basic-background-color: #ffffff;
     --basic-text-color: #222222;
     --focus-text-color: #ffffff;
@@ -10,11 +11,14 @@
     --title-font: "Stoked", Helvetica, sans-serif;
     --para-font: "Nexa Light", Helvetica, sans-serif;
     --para-font-bold: "Nexa Bold", Helvetica, sans-serif;
+    --custom-cursor: url(../img/hand-dark.png), auto;
+    cursor: var(--custom-cursor);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --main-color: #0d208b;
+    --main-color: rgba(13, 32, 139, 1);
+    --contrast-color: rgba(206, 73, 73, 1);
     --basic-background-color: #222222;
     --basic-text-color: #ffffff;
     --focus-text-color: #ffffff;
@@ -22,10 +26,13 @@
     --border-color: #000000;
     --moving-element-color: #222222;
     --exit-element-color: #ffffff;
+    --custom-cursor: url(../img/hand-light.png), auto;
+    cursor: var(--custom-cursor);
   }
 
 #head:target+body {
-    --main-color: #CE4949;
+    --contrast-color: rgba(13, 32, 139, 1);
+    --main-color: rgba(206, 73, 73, 1);
     --basic-background-color: #ffffff;
     --basic-text-color: #222222;
     --focus-text-color: #ffffff;
@@ -33,6 +40,8 @@
     --border-color: #000000;
     --moving-element-color: #ffffff;
     --exit-element-color: #222222;
+    --custom-cursor: url(../img/hand-dark.png), auto;
+    cursor: var(--custom-cursor);
 }
 }
 
@@ -142,7 +151,7 @@ div:first-of-type input[type="radio"]:not(:checked) + label {
 
 div:first-of-type > label:hover {
   background-color: var(--main-color);
-  cursor: pointer;
+  cursor: var(--custom-cursor);
 }
 
 div:first-of-type > label section {
@@ -210,7 +219,7 @@ div:first-of-type > label:hover section div:first-of-type > p {
   opacity: 1;
   color: var(--hover-text-color);
   text-decoration: underline;
-  cursor: pointer;
+  cursor: var(--custom-cursor);
 }
 
 /* Styling when focus is on one of the radio buttons/labels */ 
@@ -282,6 +291,7 @@ div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(
 }
 
 div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -295,7 +305,24 @@ div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(
   color: var(--focus-text-color);
   margin-bottom: 5vh;
   padding: 20px;
+  margin: 0px 20px;
+  display: grid;
+  grid-template-columns: auto auto;
 }
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article > p:first-of-type {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  align-self: center;
+  justify-self: end;
+  width: fit-content;
+}
+
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:not(:nth-of-type(5)), div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:not(:nth-of-type(6)) {
+  margin-bottom: 5vh;
+}
+
 
 div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) article:nth-of-type(1) {
   transform-origin: top left;
@@ -397,45 +424,26 @@ div:first-of-type input[type="radio"]:checked + label section > div:first-of-typ
 }
 
 div:first-of-type input[type="radio"]:checked + label section > div:first-of-type p {
-  text-shadow: 4px 4px 0 rgb(0, 0 ,0 , 1);
+  text-shadow: 4px 4px 0 rgb(255, 255, 255, 1);
   text-decoration-style: wavy;
   padding: 20px 20px;
-  border: 10px solid black;
+  border: 10px solid var(--contrast-color);
   border-style: dashed;
-}
-
-div:first-of-type input[type="radio"]:checked + label section > div:first-of-type p:hover {
-  color: black;
-  text-shadow: 4px 4px 0 rgb(255, 255, 255, 1);
-  border: 10px solid white;
-  border-style: dashed;
+  color: var(--contrast-color);
 }
 
 /* Animation when checking a ingredient */
-div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article {
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:first-of-type:checked ~ article {
   animation: unset;
 }
-div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(1) {
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:first-of-type:checked ~ article:nth-of-type(1), div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:first-of-type:checked ~ article:nth-of-type(3), div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:first-of-type:checked ~ article:nth-of-type(5), div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:first-of-type:checked ~ article:nth-of-type(6) {
   animation: zooming 1s infinite 0s ease-in-out;
   filter: blur(10px);
 }
-div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(2) {
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:first-of-type:checked ~ article:nth-of-type(2), div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:first-of-type:checked ~ article:nth-of-type(4) {
   animation: zooming 1s infinite 0s ease-in-out;
-}
-div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(3) {
-  animation: zooming 1s infinite 0s ease-in-out;
-  filter: blur(10px);
-}
-div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(4) {
-  animation: zooming 1s infinite 0s ease-in-out;
-}
-div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(5) {
-  animation: zooming 1s infinite 0s ease-in-out;
-  filter: blur(10px);
-}
-div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="checkbox"]:checked ~ article:nth-of-type(6) {
-  animation: zooming 1s infinite 0s ease-in-out;
-  filter: blur(10px);
 }
 
 @keyframes zooming {
@@ -481,12 +489,15 @@ div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(
 @keyframes turning{
   0%{
       transform: rotateY(0deg) scale(1);
+      mix-blend-mode: difference;
       }
   50%{
       transform: rotateY(180deg) scale(.8);
+      mix-blend-mode: overlay;
       }
   100%{
       transform: rotateY(360deg) scale(1);
+      mix-blend-mode: difference;
       }
 }
 
@@ -524,21 +535,250 @@ div:first-of-type input[type="radio"]:checked + label > div:nth-of-type(2):hover
   animation: swinging2 1.5s infinite .2s ease-in-out;
   filter: blur(10px);
 }
+
 div:first-of-type input[type="radio"]:checked + label > div:nth-of-type(2):hover ~ section > div:nth-of-type(2) > div:nth-of-type(2) article {
   animation: swinging2 1.5s infinite 0s ease-in-out;
 }
+
 div:first-of-type input[type="radio"]:checked + label > div:nth-of-type(2):hover ~ section > div:nth-of-type(2) > div:nth-of-type(2) article {
   animation: swinging2 1.5s infinite .5s ease-in-out;
   filter: blur(10px);
 }
+
 div:first-of-type input[type="radio"]:checked + label > div:nth-of-type(2):hover ~ section > div:nth-of-type(2) > div:nth-of-type(2) article {
   animation: swinging2 1.5s infinite .2s ease-in-out;
 }
+
 div:first-of-type input[type="radio"]:checked + label > div:nth-of-type(2):hover ~ section > div:nth-of-type(2) > div:nth-of-type(2) article {
   animation: swinging2 1.5s infinite .4s ease-in-out;
   filter: blur(10px);
 }
+
 div:first-of-type input[type="radio"]:checked + label > div:nth-of-type(2):hover ~ section > div:nth-of-type(2) > div:nth-of-type(2) article {
   animation: swinging2 1.5s infinite .1s ease-in-out;
   filter: blur(10px);
 }
+
+div:first-of-type input[type="radio"]:checked + label > section > div:nth-of-type(2) > div {
+  display: flex;
+}
+
+div:first-of-type input[type="radio"]:checked + label > section div:nth-of-type(2) > div > label {
+  display: flex;
+  background-color: unset;
+  flex-direction: column;
+  width: fit-content;
+}
+
+div:first-of-type input[type="radio"]:checked + label > section div:nth-of-type(2) > div > label:not(:last-of-type) {
+  margin-right: 20px;
+}
+
+div:first-of-type input[type="radio"]:checked + label > section div:nth-of-type(2) > div > label > p {
+  color: var(--focus-text-color);
+  font-family: var(--para-font-bold);
+  text-transform: uppercase;
+  font-size: 14px;
+  display: block;
+  margin: 8px auto;
+}
+
+div:first-of-type input[type="radio"]:checked + label > section div:nth-of-type(2) div > label > img {
+  width: 70px;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):not(:checked) ~ div:first-of-type {
+  display: none;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ div:first-of-type {
+  left: 0;
+  width: 50px;
+  height: 92%;
+  position: absolute;
+  background: linear-gradient(to right, rgba(255,0,0,0), var(--contrast-color), rgba(255,0,0,0));
+  animation: scanning 6s infinite 0s ease-in-out;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article {
+  animation: unset;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article > p:first-of-type:before {
+  content: "";
+  transform: scale(2);
+  animation: changingValuta 1s infinite 0s linear;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(1) > p:first-of-type, div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(5) > p:first-of-type , div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(6) > p:first-of-type {
+  animation: shakingPrice 2s forwards 2s linear;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(2) > p:first-of-type, div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(3) > p:first-of-type, div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(4) > p:first-of-type {
+  /* background-color: green; */
+}          
+
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(3) {
+  animation: resizing_option_A 2s forwards 0s ease-in-out;
+  border-bottom: 15px solid var(--contrast-color);
+  border-bottom-style: dotted;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(1), div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(2) {
+  animation: resizing_option_B 2s forwards 0s ease-in-out;
+  border-bottom: 15px solid var(--contrast-color);
+  border-bottom-style: dashed;
+}
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(4), div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(5), div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ article:nth-of-type(6) {
+  animation: resizing_option_C 2s forwards 0s ease-in-out;
+  border-bottom: 15px solid var(--contrast-color);
+  border-bottom-style: double;
+}
+
+@keyframes resizing_option_A {
+  0%{
+    width: 70%;
+  }
+  50%{
+    width: 30%;
+  }
+  100%{
+    width: 100%;
+    justify-self: start;
+}
+}
+
+@keyframes resizing_option_B {
+  0%{
+    width: 30%;
+  }
+  50%{
+    width: 60%;
+  }
+  100%{
+    width: 50%;
+    justify-self: start;
+}
+}
+
+@keyframes resizing_option_C {
+  0%{
+    width: 10%;
+  }
+  50%{
+    width: 80%;
+  }
+  100%{
+    width: 33%;
+    justify-self: start;
+}
+}
+
+
+div:first-of-type input[type="radio"]:checked + label section > div:nth-of-type(2) > div:nth-of-type(2) input[type="radio"]:nth-of-type(2):checked ~ div:nth-of-type(2) {
+  left: 0;
+  width: 50px;
+  height: 92%;
+  position: absolute;
+}
+
+@keyframes changingValuta{
+  0%{
+    content: "€";
+  }
+  20%{
+    content: "₩";
+  }
+  40%{
+    content: "₮";
+  }
+  60%{
+    content: "¥";
+  }
+  80%{
+    content: "ر.س";
+  }
+  100%{
+    content: "€";
+  }
+}
+
+@keyframes shakingPrice{
+  0%{
+      transform: rotate(0deg) scale(3) translateY(-100px);
+      }
+  20%{
+      transform: rotate(20deg) scale(2.3) translateY(-50px);
+      }
+  23%{
+      transform: rotate(-20deg) scale(2.3) translateY(-50px);
+      }
+  26%{
+      transform: rotate(20deg) scale(2) translateY(-40px);
+      }
+  29%{
+      transform: rotate(-20deg) scale(2) translateY(-40px);
+      }
+  32%{
+      transform: rotate(20deg) scale(1.7) translateY(-30px);
+      }
+  35%{
+      transform: rotate(-20deg) scale(1.7) translateY(-30px);
+      }
+  38%{
+      transform: rotate(-20deg) scale(1.5) translateY(-20px);
+      }
+  41%{
+      transform: rotate(20deg) scale(1.5) translateY(-20px);
+      }
+  44%{
+      transform: rotate(-20deg) scale(1.3) translateY(-10px);
+      }
+  47%{
+      transform: rotate(20deg) scale(1.3) translateY(-10px);
+      }
+  50%{
+      transform: rotate(-20deg) scale(.9) translateY(0px);
+      }
+  53%{
+      transform: rotate(20deg) scale(.9) translateY(0px);
+      }
+  56%{
+      transform: rotate(0deg) scale(1) translateY(0px);
+      }
+  100%{
+      }
+}
+
+@keyframes scanning{
+  0%{
+      transform: rotate(0deg) translateX(0vw);
+      }
+  5%{
+      transform: rotate(0deg) translateX(5vw);
+      }
+  25%{
+      transform: rotate(0deg) translateX(30.5vw);
+      }
+  30%{
+      transform: rotate(0deg) translateX(36.5vw);
+      }
+  50%{
+      transform: rotate(0deg) translateX(62vw);
+      }
+  55%{
+      transform: rotate(0deg) translateX(67.8vw);
+      }
+  75%{
+      transform: rotate(0deg) translateX(93vw);
+      }
+  100%{
+      transform: rotate(0deg) translateX(100vw);
+      }
+}
+
+/* Custom cursor --- Done */
+/* Adding price to dishes --- Done, still need to animate */
+/* More mobile specialness */
